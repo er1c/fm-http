@@ -15,9 +15,9 @@
  */
 package fm.netty
 
+import io.netty.util.concurrent.{Promise => NettyPromise}
 import scala.concurrent.{Future, Promise}
 import scala.util.{Failure, Success, Try}
-import io.netty.util.concurrent.{Promise => NettyPromise}
 
 /**
  * Wraps Netty's Promise as a Scala Promise

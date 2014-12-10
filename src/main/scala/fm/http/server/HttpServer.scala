@@ -15,22 +15,21 @@
  */
 package fm.http.server
 
-import java.util.concurrent.TimeUnit
-import java.util.concurrent.atomic.AtomicBoolean
-import scala.concurrent.{Await, ExecutionContext, Future, Promise}
-import scala.concurrent.duration.Duration
+import fm.common.{Logging, ScheduledTaskRunner}
+import fm.http.HttpExecutionContext
 import io.netty.bootstrap.ServerBootstrap
-import io.netty.channel.{Channel, ChannelFuture, ChannelInitializer, ChannelOption, ChannelPipeline}
 import io.netty.channel.group.{ChannelGroup, DefaultChannelGroup}
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioServerSocketChannel
+import io.netty.channel.{Channel, ChannelInitializer, ChannelOption, ChannelPipeline}
 import io.netty.handler.codec.http.{HttpRequestDecoder, HttpResponseEncoder}
 import io.netty.handler.stream.ChunkedWriteHandler
 import io.netty.util.concurrent.GlobalEventExecutor
-import fm.common.Implicits._
-import fm.common.{Logging, ScheduledTaskRunner}
-import fm.http.HttpExecutionContext
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import scala.concurrent.duration.Duration
+import scala.concurrent.{Await, ExecutionContext, Future, Promise}
 
 object HttpServer {
   

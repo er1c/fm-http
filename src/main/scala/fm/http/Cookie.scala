@@ -15,10 +15,10 @@
  */
 package fm.http
 
+import fm.common.Implicits._
 import io.netty.handler.codec.http.{Cookie => NettyCookie, CookieDecoder => NettyCookieDecoder, DefaultCookie => NettyDefaultCookie}
 import scala.collection.JavaConverters._
 import scala.util.Try
-import fm.common.Implicits._
 
 object Cookie {
   /**

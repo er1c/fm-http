@@ -15,11 +15,11 @@
  */
 package fm.http
 
-import java.lang.ref.WeakReference
-import java.io.Closeable
-import scala.concurrent.{Future, Promise}
 import io.netty.buffer.ByteBuf
 import io.netty.handler.codec.http.{HttpContent, HttpObject, LastHttpContent}
+import java.io.Closeable
+import java.lang.ref.WeakReference
+import scala.concurrent.{Future, Promise}
 
 object LinkedHttpContentBuilder {
   val empty: LinkedHttpContentBuilder = {
@@ -43,7 +43,7 @@ object LinkedHttpContentBuilder {
 }
 
 final case class LinkedHttpContentBuilder() extends Closeable {
-  import LinkedHttpContentBuilder.{isEmpty, nonEmpty}
+  import LinkedHttpContentBuilder.nonEmpty
   
   @volatile private var done: Boolean = false
   @volatile private var first: Boolean = true

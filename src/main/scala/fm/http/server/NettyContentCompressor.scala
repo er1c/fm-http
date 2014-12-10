@@ -15,8 +15,8 @@
  */
 package fm.http.server
 
-import io.netty.handler.codec.http.{HttpContentCompressor, HttpHeaders, HttpResponse}
 import io.netty.handler.codec.http.HttpContentEncoder.Result
+import io.netty.handler.codec.http.{HttpContentCompressor, HttpHeaders, HttpResponse}
 
 object NettyContentCompressor {
   /**

@@ -15,21 +15,19 @@
  */
 package fm.http.server
 
-import io.netty.handler.codec.http.{HttpHeaders, HttpMethod, HttpVersion}
-import io.netty.handler.codec.http.{DefaultHttpContent, DefaultHttpRequest, HttpRequest, LastHttpContent}
-import io.netty.handler.codec.http.multipart.{HttpPostRequestDecoder, InterfaceHttpData}
+import fm.common.{IP, Logging, QueryParams}
+import fm.http._
+import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder
+import io.netty.handler.codec.http.{DefaultHttpContent, HttpHeaders, HttpMethod, HttpRequest, HttpVersion, LastHttpContent}
 import java.io.Closeable
 import scala.collection.JavaConverters._
 import scala.concurrent.{ExecutionContext, Future, Promise}
-import fm.http._
-import fm.common.QueryParams
-import fm.common.{IP, Logging}
 
 object Request {
   def apply(remoteIp: IP, request: HttpRequest, content: LinkedHttpContentReader)(implicit execution: ExecutionContext): Request = new Request(remoteIp, request, content)
   
   private def expectBodyContent(request: HttpRequest): Boolean = {
-    import HttpMethod.{POST, PUT, PATCH}
+    import HttpMethod.{PATCH, POST, PUT}
     
     val method: HttpMethod = request.getMethod()
     val validMethod: Boolean = method == POST || method == PUT || method == PATCH

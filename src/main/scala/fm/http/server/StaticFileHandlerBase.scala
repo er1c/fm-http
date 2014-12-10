@@ -17,9 +17,9 @@ package fm.http.server
 
 import fm.common.Implicits._
 import fm.http.{MimeTypes, MutableHeaders, Status}
-import java.io.File
-import java.util.regex.{Pattern, Matcher}
 import io.netty.handler.codec.http.HttpMethod
+import java.io.File
+import java.util.regex.{Matcher, Pattern}
 import org.joda.time.DateTime
 
 trait StaticFileHandlerBase extends RequestRouter {

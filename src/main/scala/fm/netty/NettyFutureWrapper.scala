@@ -15,11 +15,11 @@
  */
 package fm.netty
 
+import io.netty.util.concurrent.{GenericFutureListener, Future => NettyFuture}
 import java.util.concurrent.TimeoutException
-import scala.concurrent.{CanAwait, ExecutionContext, Future}
 import scala.concurrent.duration.Duration
+import scala.concurrent.{CanAwait, ExecutionContext, Future}
 import scala.util.{Failure, Success, Try}
-import io.netty.util.concurrent.{Future => NettyFuture, GenericFutureListener}
 
 object NettyFutureWrapper {
   private class Listener[T, U](func: Try[T] => U) extends GenericFutureListener[NettyFuture[T]] {

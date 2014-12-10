@@ -15,11 +15,11 @@
  */
 package fm.http
 
-import java.io.{File, InputStream}
-import java.nio.charset.Charset
+import fm.common.{InputStreamResource, Logging, MultiUseResource, Resource}
 import io.netty.buffer.ByteBufInputStream
 import io.netty.handler.codec.http.{multipart => netty}
-import fm.common.{InputStreamResource, Logging, MultiUseResource, Resource}
+import java.io.{File, InputStream}
+import java.nio.charset.Charset
 
 object PostData extends Logging {
   def apply(data: netty.InterfaceHttpData): PostData = data match {

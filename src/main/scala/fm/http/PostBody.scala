@@ -15,8 +15,8 @@
  */
 package fm.http
 
-import io.netty.handler.codec.http.multipart
 import fm.common.QueryParams
+import io.netty.handler.codec.http.multipart
 
 object PostBody {
   def fromNetty(datas: Vector[multipart.InterfaceHttpData]): PostBody = apply(datas.map{ PostData(_) })

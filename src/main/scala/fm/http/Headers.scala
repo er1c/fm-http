@@ -17,10 +17,10 @@ package fm.http
 
 import fm.common.Implicits._
 import fm.common.IndexedSeqProxy
-import java.util.Date
 import io.netty.handler.codec.http.{ClientCookieEncoder, DefaultHttpHeaders, HttpHeaders, ServerCookieEncoder}
-import org.joda.time.{DateTime, DateTimeZone}
+import java.util.Date
 import org.joda.time.format.{DateTimeFormat, DateTimeFormatter}
+import org.joda.time.{DateTime, DateTimeZone}
 import scala.collection.JavaConverters._
 import scala.util.Try
 
@@ -78,7 +78,7 @@ object Headers {
 
 sealed trait Headers extends IndexedSeqProxy[(String, String)] {
   import Headers._
-  import HttpHeaders.{Names, Values}
+  import HttpHeaders.Names
   
   private[http] def nettyHeaders: HttpHeaders
   def self: Vector[(String, String)] = nettyHeaders.asScala.toVector.map{ entry => entry.getKey() -> entry.getValue() }
@@ -262,7 +262,7 @@ final case class ImmutableHeaders(nettyHeaders: HttpHeaders) extends Headers {
 
 final case class MutableHeaders(nettyHeaders: HttpHeaders = new DefaultHttpHeaders(false /* don't validate */)) extends Headers {
   import Headers._
-  import HttpHeaders.{Names, Values}
+  import HttpHeaders.Names
   
   def add(name: String, value: String): Unit = add(name, Option(value))
   

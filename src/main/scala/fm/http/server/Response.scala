@@ -15,12 +15,11 @@
  */
 package fm.http.server
 
-import java.io.{File, InputStream}
-import scala.concurrent.Future
+import fm.http._
 import io.netty.buffer.{ByteBuf, Unpooled}
 import io.netty.handler.codec.http._
 import io.netty.util.CharsetUtil
-import fm.http._
+import java.io.{File, InputStream}
 
 object Response {
   /** 200 */

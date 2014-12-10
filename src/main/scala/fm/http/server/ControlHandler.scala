@@ -15,9 +15,9 @@
  */
 package fm.http.server
 
-import scala.concurrent.Future
 import fm.common.Logging
 import fm.http.Status
+import scala.concurrent.Future
 
 object ControlHandler {
   private def Ok = Future.successful(Response(Status.OK, "ok"))

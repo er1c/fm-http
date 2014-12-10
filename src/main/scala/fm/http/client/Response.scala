@@ -15,14 +15,11 @@
  */
 package fm.http.client
 
-import io.netty.buffer.ByteBuf
-import io.netty.handler.codec.http.{HttpHeaders, HttpResponse, HttpResponseStatus, HttpVersion}
-import io.netty.handler.codec.http.multipart.{HttpPostRequestDecoder, InterfaceHttpData}
-import java.io.Closeable
-import scala.collection.JavaConverters._
-import scala.concurrent.{ExecutionContext, Future, Promise}
 import fm.common.Logging
 import fm.http._
+import io.netty.handler.codec.http.{HttpHeaders, HttpResponse, HttpVersion}
+import java.io.Closeable
+import scala.concurrent.{ExecutionContext, Future, Promise}
 
 object Response {
   def apply(response: HttpResponse, content: LinkedHttpContentReader)(implicit execution: ExecutionContext): AsyncResponse = new AsyncResponse(response, content)

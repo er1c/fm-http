@@ -1,8 +1,8 @@
 package fm.http.server
 
 import fm.common.{ClassUtil, Logging}
-import java.lang.ref.WeakReference
 import java.io.InputStream
+import java.lang.ref.WeakReference
 import java.net.URL
 import java.util.Enumeration
 

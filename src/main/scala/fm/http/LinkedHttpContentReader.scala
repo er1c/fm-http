@@ -15,15 +15,15 @@
  */
 package fm.http
 
-import scala.concurrent.{ExecutionContext, Future, Promise}
-import scala.util.{Failure, Success, Try}
+import fm.common.Implicits._
 import io.netty.buffer.{ByteBuf, Unpooled}
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.http.{DefaultFullHttpResponse, FullHttpResponse, HttpResponseStatus, HttpVersion}
 import io.netty.util.CharsetUtil
 import java.io.{Closeable, File, FileOutputStream}
 import java.util.concurrent.atomic.AtomicBoolean
-import fm.common.Implicits._
+import scala.concurrent.{ExecutionContext, Future, Promise}
+import scala.util.{Failure, Success, Try}
 
 object LinkedHttpContentReader {
   def apply(need100Continue: Boolean, head: Future[Option[LinkedHttpContent]])(implicit ctx: ChannelHandlerContext, executor: ExecutionContext): LinkedHttpContentReader = new LinkedHttpContentReader(need100Continue, head)

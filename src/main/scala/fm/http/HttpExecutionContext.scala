@@ -15,8 +15,8 @@
  */
 package fm.http
 
-import scala.concurrent.ExecutionContext
 import fm.common.ScheduledTaskRunner
+import scala.concurrent.ExecutionContext
 
 object HttpExecutionContext {
   /**

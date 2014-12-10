@@ -15,21 +15,17 @@
  */
 package fm.http.client
 
-import java.io.{File, FileNotFoundException, IOException, RandomAccessFile}
-import java.net.{MalformedURLException, SocketAddress}
-
+import fm.common.Logging
+import fm.http._
 import io.netty.channel._
 import io.netty.channel.group.ChannelGroup
 import io.netty.handler.codec.http._
 import io.netty.handler.codec.socks._
-import io.netty.util.{AttributeKey, ReferenceCountUtil}
-
+import io.netty.util.ReferenceCountUtil
+import java.io.{File, FileNotFoundException, IOException, RandomAccessFile}
+import java.net.SocketAddress
 import scala.concurrent.{ExecutionContext, Future, Promise}
 import scala.util.{Failure, Success, Try}
-
-import fm.http._
-import fm.common.{Logging, URL}
-import fm.common.Implicits._
 
 object NettyHttpClientPipelineHandler {
   io.netty.handler.codec.http.multipart.DiskAttribute.deleteOnExitTemporaryFile = false  // DO NOT USE File.deleteOnExit() since it uses an append-only LinkedHashSet

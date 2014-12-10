@@ -15,10 +15,10 @@
  */
 package fm.http.client
 
-import io.netty.buffer.{ByteBuf, Unpooled}
-import io.netty.handler.codec.http.{ClientCookieEncoder, DefaultFullHttpRequest, DefaultHttpRequest, FullHttpRequest, HttpHeaders, HttpMessage, HttpRequest, HttpMethod, HttpVersion}
-import java.io.File
 import fm.http._
+import io.netty.buffer.{ByteBuf, Unpooled}
+import io.netty.handler.codec.http.{DefaultFullHttpRequest, DefaultHttpRequest, FullHttpRequest, HttpMessage, HttpMethod, HttpRequest, HttpVersion}
+import java.io.File
 
 object Request {
   def Get(uri: String, headers: Headers): FullRequest = FullRequest(HttpMethod.GET, uri, headers)

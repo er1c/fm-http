@@ -19,13 +19,13 @@ import com.frugalmechanic.optparse._
 import fm.common.Implicits._
 import fm.common.Logging
 import java.io.{BufferedReader, InputStreamReader, OutputStream, PrintStream}
-import java.net.{URL, HttpURLConnection}
 import java.lang.management.ManagementFactory
+import java.net.{HttpURLConnection, URL}
 import jnr.posix.POSIXFactory
 import jnr.posix.util.DefaultPOSIXHandler
 import org.slf4j.LoggerFactory
-import scala.util.control.Breaks._
 import scala.collection.JavaConverters._
+import scala.util.control.Breaks._
 
 abstract class HttpServerApp extends Logging {
   /** The RequestRouter that will handle requests */

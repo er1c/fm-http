@@ -16,9 +16,9 @@
 package fm.http.server
 
 import fm.common.Implicits._
+import io.netty.handler.codec.http.HttpMethod
 import java.util.regex.Pattern
 import scala.util.matching.Regex
-import io.netty.handler.codec.http.HttpMethod
 
 object RouteMatchers {
 //  def main(args: Array[String]): Unit = {

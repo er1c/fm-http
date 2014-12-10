@@ -16,12 +16,12 @@
 package fm.http.server
 
 import com.frugalmechanic.optparse.OptParse
-import fm.common.{DigestUtils, Logging, Crypto, StacklessException}
+import fm.common.{Crypto, DigestUtils, Logging, StacklessException}
 import fm.http.{Headers, Status}
 import io.netty.handler.codec.http.HttpHeaders
 import java.security.SecureRandom
-import scala.util.matching.Regex
 import scala.concurrent.Future
+import scala.util.matching.Regex
 
 object DigestAuth {
   private val DigestAuthHeader: Regex = """Digest (.+)""".r

@@ -15,14 +15,13 @@
  */
 package fm.http
 
-import scala.concurrent.{Await, Future, Promise}
-import scala.concurrent.duration._
-import org.scalatest.{BeforeAndAfterAll, FunSuite, Matchers}
-import io.netty.buffer.{ByteBuf, Unpooled}
-import io.netty.util.CharsetUtil
-import fm.common.{Logging, TestHelpers}
 import fm.common.Implicits._
+import fm.common.{Logging, TestHelpers}
 import fm.lazyseq.LazySeq
+import io.netty.buffer.{ByteBuf, Unpooled}
+import org.scalatest.{BeforeAndAfterAll, FunSuite, Matchers}
+import scala.concurrent.duration._
+import scala.concurrent.{Await, Future, Promise}
 
 object TestClientAndServer {
   val port: Int = 1234
@@ -100,7 +99,6 @@ object TestClientAndServer {
 // TODO: split this into a "stress test" mode and a "normal" unit testing mode
 final class TestClientAndServer extends FunSuite with Matchers with BeforeAndAfterAll {
   import TestClientAndServer.{charForIdx, client, requestCount}
-  import client.executionContext
   import fm.http.client._
   
   override def beforeAll(): Unit = {

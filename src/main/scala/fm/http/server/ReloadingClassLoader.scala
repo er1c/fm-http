@@ -1,10 +1,10 @@
 package fm.http.server
 
 import fm.common.IOUtils
-import java.io.{File, InputStream}
+import java.io.InputStream
 import java.lang.reflect.Method
-import java.net.{URL, URLClassLoader, URLConnection}
-import java.security.{ProtectionDomain, Policy, CodeSource, CodeSigner}
+import java.net.{URL, URLConnection}
+import java.security.{CodeSigner, CodeSource, Policy, ProtectionDomain}
 import java.util.concurrent.ConcurrentHashMap
 import scala.collection.JavaConverters._
 import scala.util.Try

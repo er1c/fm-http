@@ -19,28 +19,22 @@ package fm.http.client
 import fm.common.Implicits._
 import fm.common.{IP, Logging, ScheduledTaskRunner, URL}
 import fm.http._
-import fm.netty._
-
 import io.netty.bootstrap.Bootstrap
-import io.netty.channel.{Channel, ChannelFuture, ChannelInitializer, ChannelOption, ChannelPipeline}
 import io.netty.channel.group.{ChannelGroup, DefaultChannelGroup}
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioSocketChannel
-import io.netty.handler.codec.http.{HttpClientCodec, HttpResponseStatus}
+import io.netty.channel.{Channel, ChannelFuture, ChannelInitializer, ChannelOption, ChannelPipeline}
+import io.netty.handler.codec.http.HttpClientCodec
 import io.netty.handler.codec.socks._
-import io.netty.handler.stream.ChunkedWriteHandler
 import io.netty.handler.ssl.SslHandler
 import io.netty.util.concurrent.GlobalEventExecutor
-
-import java.util.concurrent.{ConcurrentHashMap, TimeoutException, TimeUnit}
-import java.io.{Closeable, File, FileNotFoundException, IOException}
+import java.io.{Closeable, IOException}
 import java.lang.ref.WeakReference
 import java.net.MalformedURLException
-
-import scala.collection.JavaConverters._
-import scala.concurrent.{ExecutionContext, Future, Promise}
+import java.util.concurrent.{ConcurrentHashMap, TimeoutException}
 import scala.concurrent.duration._
+import scala.concurrent.{ExecutionContext, Future, Promise}
 import scala.util.{Failure, Success, Try}
 
 
@@ -166,7 +160,7 @@ final case class HttpClient(
   defaultResponseTimeout: Duration = 5.minutes, // The maximum time to wait for a Response
   defaultConnectTimeout: Duration = 30.seconds // The maximum time to wait to connect to a server
 ) extends Closeable with Logging {
-  import HttpClient.{EndPoint, ThreadFactory, TimeoutTask, workerGroup}
+  import HttpClient.{EndPoint, TimeoutTask, workerGroup}
   
   require(maxConnectionsPerHost > 0, "maxConnectionsPerHost must be > 0")
   
@@ -321,7 +315,7 @@ final case class HttpClient(
     }
     
     if (socksProxy.isDefined) {
-      import NettyHttpClientPipelineHandler.{SOCKSInit, SOCKSAuth, SOCKSConnect}
+      import NettyHttpClientPipelineHandler.{SOCKSConnect, SOCKSInit}
       import scala.collection.JavaConverters._
       
       
