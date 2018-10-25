@@ -24,9 +24,13 @@ import io.netty.handler.codec.http.{DefaultFullHttpRequest, DefaultHttpRequest, 
 import io.netty.util.CharsetUtil
 
 object Request {
+  def Delete(url: String, headers: Headers): FullRequest = FullRequest(HttpMethod.DELETE, URL(url), headers)
+
   def Get(url: String, headers: Headers): FullRequest = FullRequest(HttpMethod.GET, URL(url), headers)
-  
+
   def Head(url: String, headers: Headers): FullRequest = FullRequest(HttpMethod.HEAD, URL(url), headers)
+
+  def Options(url: String, headers: Headers): FullRequest = FullRequest(HttpMethod.OPTIONS, URL(url), headers)
   
   def Post(url: String, headers: Headers): FullRequest = FullRequest(HttpMethod.POST, URL(url), headers)
   def Post(url: String, headers: Headers, data: String): FullRequest = FullRequest(HttpMethod.POST, URL(url), headers, Unpooled.copiedBuffer(data, CharsetUtil.UTF_8))
@@ -34,6 +38,13 @@ object Request {
   def Post(url: String, headers: Headers, buf: ByteBuf): FullRequest = FullRequest(HttpMethod.POST, URL(url), headers, buf)
   def Post(url: String, headers: Headers, head: LinkedHttpContent): AsyncRequest = AsyncRequest(HttpMethod.POST, URL(url), headers, head)
   def Post(url: String, headers: Headers, file: File): FileRequest = FileRequest(HttpMethod.POST, URL(url), headers, file)
+
+  def Put(url: String, headers: Headers): FullRequest = FullRequest(HttpMethod.PUT, URL(url), headers)
+  def Put(url: String, headers: Headers, data: String): FullRequest = FullRequest(HttpMethod.PUT, URL(url), headers, Unpooled.copiedBuffer(data, CharsetUtil.UTF_8))
+  def Put(url: String, headers: Headers, data: Array[Byte]): FullRequest = FullRequest(HttpMethod.PUT, URL(url), headers, Unpooled.copiedBuffer(data))
+  def Put(url: String, headers: Headers, buf: ByteBuf): FullRequest = FullRequest(HttpMethod.PUT, URL(url), headers, buf)
+  def Put(url: String, headers: Headers, head: LinkedHttpContent): AsyncRequest = AsyncRequest(HttpMethod.PUT, URL(url), headers, head)
+  def Put(url: String, headers: Headers, file: File): FileRequest = FileRequest(HttpMethod.PUT, URL(url), headers, file)
 }
 
 sealed trait Request {
